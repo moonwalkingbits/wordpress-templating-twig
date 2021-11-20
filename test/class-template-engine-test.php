@@ -1,6 +1,6 @@
 <?php
 
-namespace Moonwalking_Bits\Templating\Engine;
+namespace Moonwalking_Bits\Templating\Twig;
 
 use Moonwalking_Bits\Templating\Template_Not_Found_Exception;
 use PHPUnit\Framework\TestCase;
@@ -10,19 +10,19 @@ use Twig\Loader\ArrayLoader;
 use Twig\Loader\FilesystemLoader;
 
 /**
- * @coversDefaultClass \Moonwalking_Bits\Templating\Engine\Twig
+ * @coversDefaultClass \Moonwalking_Bits\Templating\Twig\Template_Engine
  */
-class Twig_Test extends TestCase {
+class Template_Engine_Test extends TestCase {
 	private array $template_directories = array(
 		__DIR__ . '/fixtures/templates/'
 	);
-	private Twig $engine;
+	private Template_Engine $engine;
 
 	/**
 	 * @before
 	 */
 	public function set_up(): void {
-		$this->engine = new Twig( new Environment( new FilesystemLoader( $this->template_directories ) ) );
+		$this->engine = new Template_Engine( new Environment( new FilesystemLoader( $this->template_directories ) ) );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class Twig_Test extends TestCase {
 	 * @test
 	 */
 	public function should_accept_template_directories(): void {
-		$engine = new Twig( new Environment( new FilesystemLoader() ) );
+		$engine = new Template_Engine( new Environment( new FilesystemLoader() ) );
 		$engine->add_template_directories( $this->template_directories );
 
 		$this->assertEquals( 'title', $engine->render( 'index.twig' ) );
@@ -71,7 +71,7 @@ class Twig_Test extends TestCase {
 	public function should_throw_exception_if_not_using_filesystem_loader(): void {
 		$this->expectException( RuntimeException::class );
 
-		$engine = new Twig( new Environment( new ArrayLoader() ) );
+		$engine = new Template_Engine( new Environment( new ArrayLoader() ) );
 		$engine->add_template_directories( array() );
 	}
 

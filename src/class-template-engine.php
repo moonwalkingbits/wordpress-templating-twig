@@ -2,15 +2,15 @@
 /**
  * Templating Twig: Template engine implementation
  *
- * @package Moonwalking_Bits\Templating\Engine
+ * @package Moonwalking_Bits\Templating\Twig
  * @author Martin Pettersson
  * @license GPL-2.0
  * @since 0.1.0
  */
 
-namespace Moonwalking_Bits\Templating\Engine;
+namespace Moonwalking_Bits\Templating\Twig;
 
-use Moonwalking_Bits\Templating\Engine_Interface;
+use Moonwalking_Bits\Templating\Template_Engine_Interface;
 use Moonwalking_Bits\Templating\Template_Not_Found_Exception;
 use RuntimeException;
 use Twig\Environment;
@@ -22,7 +22,7 @@ use Twig\Loader\FilesystemLoader;
  *
  * @since 0.1.0
  */
-class Twig implements Engine_Interface {
+class Template_Engine implements Template_Engine_Interface {
 
 	/**
 	 * A configured Twig environment.
