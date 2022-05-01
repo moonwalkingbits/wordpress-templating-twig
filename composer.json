@@ -25,7 +25,7 @@
 	},
 	"require": {
 		"php": ">=7.4",
-		"moonwalkingbits/wordpress-templating": "^0.1.0",
+		"moonwalkingbits/wordpress-templating": "^0.2.0",
 		"twig/twig": "^3.3"
 	},
 	"require-dev": {
@@ -35,5 +35,10 @@
 		"phpmd/phpmd": "^2.10",
 		"phan/phan": "^5.3",
 		"phpunit/phpunit": "^9.5"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }
